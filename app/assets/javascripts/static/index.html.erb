@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            .selected {
+                stroke-width: 11;
+            }
+            .d3plus-textBox {
+                stroke-width: 0;
+            }
+
+            svg[id^="text"].selected {
+                    stroke-dasharray: 5 2;
+                    stroke: blue;
+            }
+
+            #g_board svg rect {
+                fill: transparent;
+            }
+
+            .shape {
+                stroke-width: 8;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="canvas">
+        </div>
+    </body>
+    <%= javascript_include_tag "canvas", "data-turbolinks-track" => true %>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="./rect.js"></script>
+    <script src="./shapes.js"></script>
+    <script src="./text.js"></script>
+    <script src="https://d3plus.org/js/d3plus.v2.0.0-alpha.25.full.min.js"></script>
+
+    </html>

@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <style>
+            .selected {
+                stroke-width: 3;
+            }
+            .d3plus-textBox {
+                stroke-width: 0;
+            }
+
+            svg[id^="text"].selected {
+                    stroke-dasharray: 5 2;
+                    stroke: blue;
+            }
+
+            #g_board svg rect {
+                fill: transparent;
+            }
+
+            # path {
+            #     pointer-events:all;
+            #     fill-opacity: 0;
+            # }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="canvas">
+        <button id="savebutton"> Save </button>
+
+        </div>
+        <%= content_tag :div, '', id: 'file_contents', data: { source: @file_contents } %>
+
+    </body>
+
+    <%= javascript_include_tag "static/canvas", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "static/shapes", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "static/rect", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "static/text", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "https://d3js.org/d3.v5.js", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "https://d3plus.org/js/d3plus.v2.0.0-alpha.25.full.min.js", "data-turbolinks-track" => true %>
+
+    </html>
