@@ -1,0 +1,75 @@
+.selected {
+    stroke-width: 7px !important;
+}
+
+svg[id^="text"].selected{
+    stroke-dasharray: 5 2;
+    stroke: #eeeeee;
+}
+
+#g_board {
+    stroke: #eeeeee;
+    fill: #ffffff;
+    svg  {
+        fill: transparent;
+    }
+    .selected {
+        polygon, circle {
+            stroke-width: 3px !important;
+        }
+        polygon {
+            stroke: #dddddd;
+        }
+    }
+    #g_board polygon, #g_board circle, rect {
+        vector-effect: non-scaling-stroke
+    }
+}
+
+#board {
+    x: 1vw;
+    y: 1vh;
+    width: 97vw;
+    height: 88vh;
+}
+
+#palette {
+    x: 50vw;
+    y: 80vh;
+    width: 30vw;
+    height: 6vh;
+    fill: #1b2733;
+}
+
+svg.canvas {
+    height: 90vh;
+    width: 100vw;
+}
+
+.shape {
+    stroke: #c1c7cd;
+    fill: #1b2733;
+    stroke-width: 3px;
+}
+
+#text_shp rect {
+    stroke-dasharray: 5 2;
+}
+
+.textarea {
+    stroke-width: 0;
+    max-width: inherit;
+     resize: none;
+     margin: 3px;
+    min-height: 70px;
+    border: none;
+    outline: unset;
+    width: inherit;
+    height: inherit;
+}
+
+foreignObject {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+}

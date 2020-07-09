@@ -1,0 +1,42 @@
+#error_explanation {
+    color: red;
+}
+
+.down_links {
+    display: block;
+    text-align: center;
+}
+
+.field, .actions, .button_to {
+    text-align: center;
+    font-weight: lighter;
+    font-family: none;
+    input[type="submit"]:not(#user_remember_me) {
+        width: 26.5vw;
+    }
+    input:not(#user_remember_me) {
+        height: 7vh;
+        border: 1px solid lightgray;
+        align-items: center;
+        font-size: 20px;
+        padding-left: 15px;
+        margin: 7px;
+        width: 25vw;
+    }
+}
+
+
+.actions input {
+    font-size: 17px;
+    background-color: steelblue;
+}
+
+.button_to input {
+    background-color: white;
+}
+
+h1 {
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 15vh;
+}

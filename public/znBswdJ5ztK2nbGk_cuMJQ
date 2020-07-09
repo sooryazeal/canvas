@@ -1,0 +1,11 @@
+<g id="g_board">
+            <rect id="board"></rect>
+        <svg id="text1594074655988" class="" x="56.82vw" y="57.95vh" height="5vh" width="10vw" onmousedown="rectOnClick(evt)" onmousemove="rectOnMove(evt)" onmouseup="rectOnUp(evt)" onclick="rectOnSelected(evt)" stroke="none" style="overflow: visible" ondblclick="textOnDblClick(evt)" data-x="48.0213623046875" data-y="91.60107421875">
+                <rect width="100%" height="100%"></rect>
+            <foreignObject style="max-width: 100%" width="100%" height="100%"><div style="stroke-width: 0;max-width: inherit; resize: none; margin: 3px;min-height: 70px;border: none;outline: unset;" width="inherit" contenteditable="true" height="inherit" class="textarea">sgsgsf</div></foreignObject></svg><svg id="rect1594075509675" class="" x="67.87vw" y="40.37vh" height="20vh" width="15vw" onmousedown="rectOnClick(evt)" onmousemove="rectOnMove(evt)" onmouseup="rectOnUp(evt)" onclick="rectOnSelected(evt)" stroke="#bbbbbb">
+                <rect width="100%" height="100%"></rect>
+            </svg><svg id="rect1594075514909" class="" x="76.74vw" y="16.06vh" height="20vh" width="15vw" onmousedown="rectOnClick(evt)" onmousemove="rectOnMove(evt)" onmouseup="rectOnUp(evt)" onclick="rectOnSelected(evt)" stroke="#bbbbbb">
+                <rect width="100%" height="100%"></rect>
+            </svg><svg id="rect1594075569292" class="selected" x="33.27vw" y="38.25vh" height="20vh" width="15vw" onmousedown="rectOnClick(evt)" onmousemove="rectOnMove(evt)" onmouseup="rectOnUp(evt)" onclick="rectOnSelected(evt)" stroke="#bbbbbb">
+                <rect width="100%" height="100%"></rect>
+            </svg></g>

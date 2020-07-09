@@ -10,22 +10,46 @@
   </head>
 
   <body>
-  <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-<p class="navbar-text float-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-</p>
+  <% if user_signed_in? %>
+  <table style="float: right;cell-spacing: 0px;">
+  <tbody><tr>
+  <td><svg style="
+  height: 8vh;
+  display: block;
+  float: right;
+  width: 7vw;
+  fill: steelblue;
+  cursor: pointer;
+    user-select: none;
+  " onclick="toggleOptions()">
+  <circle cx="50" cy="30" r="25"></circle>
+  <text x="42" y="35" style="
+fill: black;
+">SE</text></svg>
+  </td></tr>
+  <tr style="
+    position: fixed;
+    float: right;
+    padding: 0px 16px;
+">
+  <td id="options" style="box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.28);height: 4vh;color: gray; display: none"><a class="navbar-link down_links" rel="nofollow" data-method="delete" href="/users/sign_out" style="
+    text-decoration: none;
+    color: black;
+    padding: 6px;
+">Logout</a></td>
+  </tr>
+  </tbody></table>
+      <% else %>
+      <p class="navbar-text float-right" style="height: 13vh;
+    border-bottom: 1px solid lightgray;">
+        <%= image_tag 'logo.png', :style => "transform-origin: top left; transform: scale(0.6);" %>
+        <% link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+        <% link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <% end %>
+    </p>
     <%= yield %>
   </body>
+    <%= javascript_include_tag "static/canvas", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "https://d3js.org/d3.v5.js", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "https://d3plus.org/js/d3plus.v2.0.0-alpha.25.full.min.js", "data-turbolinks-track" => true %>
 </html>

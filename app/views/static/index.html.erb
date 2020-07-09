@@ -1,44 +1,31 @@
-<html>
-    <head>
-        <style>
-            .selected {
-                stroke-width: 3;
-            }
-            .d3plus-textBox {
-                stroke-width: 0;
-            }
+<div id="canvas">
+    <button id="savebutton" onclick="saveClick()"> Save </button>
+    <button id='undo' onclick="stackUndo()">Undo</button>
+    <button id='redo' onclick="stackRedo()">Redo</button>
+    <svg class="canvas">
+        <g id="g_board">
+            <rect id="board"></rect>
+        </g>
+        <g id="shapes">
+            <rect id="palette" rx="10" ry="10"></rect>
+            <svg id="rect_shp" class="shape selected" x="51%" y="90%" height="4vh" width="2.5vw"
+            onmousedown="rectShpOnClick(evt)" onmousemove="rectShpOnMove(evt)" onmouseup="rectShpOnUp(evt)">
+                <rect width="100%" height="100%"></rect>
+            </svg>
+            <svg id="text_shp" class="shape" x="54%" y="90%" height="4vh" width="2.5vw"
+            onmousedown="textShpOnClick(evt)" onmousemove="textShpOnMove(evt)" onmouseup="textShpOnUp(evt)">
+                <rect width="100%" height="100%"></rect>
+            </svg>
+            <svg id="dmd_shp" class="shape" x="57%" y="90%" height="4vh" width="2.5vw" onmousedown="dmdShpOnClick(evt)" onmousemove="dmdShpOnMove(evt)" onmouseup="dmdShpOnUp(evt)" viewBox="0 0 100 100">
+                <polygon points="3,50 50,97 97,50 50,3"></polygon>
+            </svg>
+            <svg id="crcl_shp" class="shape" x="60%" y="90%" height="4vh" width="2.5vw" onmousedown="crclShpOnClick(evt)" onmousemove="crclShpOnMove(evt)" onmouseup="crclShpOnUp(evt)" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="47"></circle>
+            </svg>
+        </g>
 
-            svg[id^="text"].selected {
-                    stroke-dasharray: 5 2;
-                    stroke: blue;
-            }
-
-            #g_board svg rect {
-                fill: transparent;
-            }
-
-            # path {
-            #     pointer-events:all;
-            #     fill-opacity: 0;
-            # }
+    </svg>
 
 
-        </style>
-    </head>
-    <body>
-        <div id="canvas">
-        <button id="savebutton"> Save </button>
-
-        </div>
-        <%= content_tag :div, '', id: 'file_contents', data: { source: @file_contents } %>
-
-    </body>
-
-    <%= javascript_include_tag "static/canvas", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "static/shapes", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "static/rect", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "static/text", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "https://d3js.org/d3.v5.js", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "https://d3plus.org/js/d3plus.v2.0.0-alpha.25.full.min.js", "data-turbolinks-track" => true %>
-
-    </html>
+</div>
+<%= content_tag :div, '', id: 'file_contents', data: { source: @file_contents } %>

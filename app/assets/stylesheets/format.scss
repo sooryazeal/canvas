@@ -1,0 +1,8 @@
+.fmt {
+    font-size: x-large;
+    stroke-width: 1px !important;
+    user-select: none;
+    &.selected {
+         stroke-width: 3px !important;
+    }
+}
