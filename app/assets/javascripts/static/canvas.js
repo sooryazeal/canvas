@@ -35,6 +35,9 @@ function deletedSelected(event) {
     if (!document.activeElement.classList.contains("textarea")) {
         selected.forEach(function(x) {
             x.remove()
+            x_marker_id = x.getAttribute("id") + "_marker"
+            x_marker = document.querySelector('#' + x_marker_id)
+            x_marker.remove()
         })
     }
 };
@@ -58,6 +61,7 @@ function initialize() {
         rectOnMove(event)
         rectShpOnMove(event)
         textShpOnMove(event)
+        showMarker(event)
     })
     boardObj.addEventListener('mouseup', (event) => {
         removeClass('#g_board .selected', ['selected'])
@@ -82,6 +86,66 @@ function initialize() {
     fmt()
 }
 
+function showMarker(event) {
+        arrowStart = null
+        nearestShape = null
+        allShapes = document.querySelectorAll('#g_board .object')
+        allShapes.forEach(function(s) {
+            skip = false
+            dim = s.getBoundingClientRect()
+            topOrBotomOfShape = event.clientX < dim.right && event.clientX > dim.left
+            leftOrRightOfShape = event.clientY < dim.bottom && event.clientY > dim.top
+            if (topOrBotomOfShape) {
+                nearTop = dim.top - event.clientY > -5 && dim.top - event.clientY < 20
+                nearBottom = event.clientY - dim.bottom > -5 && event.clientY - dim.bottom < 20
+                if (nearTop) {
+                    arrowStart = {x: event.clientX, y: s.getAttribute("y")}
+                } else if (nearBottom) {
+                    arrowStart = {x: event.clientX, y: (parseFloat(s.getAttribute("y").split("v")[0]) + parseFloat(s.getAttribute("height").split("v")[0])).toString() + "vh"}
+                }
+            }
+            if (!arrowStart && leftOrRightOfShape) {
+                nearRight = event.clientX - dim.right > -5 && event.clientX - dim.right < 20
+                nearLeft = dim.left - event.clientX  > -5 && dim.left - event.clientX < 20
+                if (nearRight) {
+                    arrowStart = {x: dim.right, y: percentageOfAbsY(event.clientY - 25, true, s.getAttribute("y").split("v")[0], parseFloat(s.getAttribute("y").split("v")[0]) + parseFloat(s.getAttribute("height").split("v")[0]))}
+                } else if (nearLeft) {
+                    arrowStart = {x: dim.left, y: percentageOfAbsY(event.clientY - 25, true, s.getAttribute("y").split("v")[0], parseFloat(s.getAttribute("y").split("v")[0]) + parseFloat(s.getAttribute("height").split("v")[0]))}
+                }
+            }
+            removeClass('svg', ['nearest'])
+            if (arrowStart) {
+                nearestShape = s
+                nearestShape.classList.add('nearest')
+                nearestShape_marker_id = nearestShape.getAttribute("id") + "_marker"
+                startDot = document.querySelector("#" + nearestShape_marker_id + ' .start')
+                startDot.setAttribute('cx', arrowStart.x)
+                startDot.setAttribute('cy', arrowStart.y)
+                return
+            } else {
+                startDots = document.querySelectorAll('.start')
+                startDots.forEach(function(startDot) {
+                startDot.setAttribute('cx', 0)
+                startDot.setAttribute('cy', 0)
+                })
+            }
+        })
+    if (event.target.closest('svg').classList.contains('object')) {
+        nearestShape = event.target.closest('svg')
+    }
+    if (nearestShape) {
+        nearestShape_marker_id = nearestShape.getAttribute("id") + "_marker"
+        nearestMarker = document.querySelector('#' + nearestShape_marker_id)
+        nearestMarker.classList.add('nearest')
+    }
+
+
+    // if clicked when showing red dot start a line
+    // when pointer moved change the line
+    // when mouse up show arrow head.
+}
+
+
 function isWritingBold() {
   return document.queryCommandState('bold');
 }
@@ -103,8 +167,9 @@ function toggleOptions() {
 }
 
 function percentageOfAbsY(y, flag = true, start = 1, end = 69, adjust = true) {
+    y = adjust ? y - document.querySelector('.canvas').getBoundingClientRect().top: y
     result = y*100/document.querySelector('.canvas').clientHeight
-    result = adjust ? result - 11 :result
+    // result = adjust ? result - 11 :result
     result = yBox(result.toFixed(2), start, end)
     return flag ? result.toString() + "vh" : result
 }
@@ -117,6 +182,11 @@ function xBox(value, start = 1, end = 80) {
 function yBox(value, start = 1, end = 69) {
     value = Math.min(value, end)
     return Math.max(start, value)
+}
+
+
+function addvddivby(one, two, div = 1) {
+    return (parseFloat(one.split("v")[0]) + parseFloat(two.split("v")[0])/ div).toFixed(2).toString() + "v" + one.split("v")[1]
 }
 
 

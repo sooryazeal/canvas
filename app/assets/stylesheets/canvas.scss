@@ -21,9 +21,15 @@ svg[id^="text"].selected{
             stroke: #dddddd;
         }
     }
-    #g_board polygon, #g_board circle, rect {
+    polygon, circle, rect {
         vector-effect: non-scaling-stroke
     }
+
+    .nearest circle {
+    &.bc, &.tc, &.lc, &.rc, &.start{
+        opacity: 1;
+    }
+}
 }
 
 #board {
@@ -72,4 +78,21 @@ foreignObject {
     max-width: 100%;
     width: 100%;
     height: 100%;
+}
+
+circle {
+    &.br, &.tr, &.bl, &.tl, &.bc, &.tc, &.lc, &.rc, &.start{
+        fill: steelblue;
+        stroke: none;
+        opacity: 0;
+    }
+    &.start {
+        fill: red;
+    }
+}
+
+.resize circle {
+    &.br, &.tr, &.bl, &.tl{
+        opacity: 1;
+    }
 }

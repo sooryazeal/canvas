@@ -40,3 +40,41 @@ h1 {
     text-align: center;
     margin-top: 15vh;
 }
+
+table {
+    float: right;
+    cell-spacing: 0px;
+    .initials {
+        height: 8vh;
+        display: block;
+        float: right;
+        width: 7vw;
+        fill: steelblue;
+        cursor: pointer;
+        user-select: none;
+    }
+    .options {
+        position: fixed;
+        float: right;
+        padding: 0px 16px;
+    }
+    #options {
+        box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.28);
+        height: 4vh;color: gray;
+        display: none;
+        a {
+            text-decoration: none;
+            color: black;
+            padding: 6px;
+        }
+    }
+}
+
+.logo {
+    transform-origin: top left;
+    transform: scale(0.6);
+    img {
+        transform-origin: top left;
+        transform: scale(0.6);
+    }
+}

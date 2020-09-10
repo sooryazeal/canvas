@@ -4,13 +4,29 @@
     <button id='redo' onclick="stackRedo()">Redo</button>
     <svg class="canvas">
         <g id="g_board">
-            <rect id="board"></rect>
+            <rect id="board">
+            <svg id="arrow" height="4vh" width="1.5vw">
+                <defs>
+                    <marker id="arrowhead" markerWidth="20%" markerHeight="90%" refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 1, 3 3.5, 0 6" stroke-width="1px"></polygon>
+                    </marker>
+                </defs>
+                <line x1="0%" y1="50%" x2="60%" y2="50%" marker-end="url(#arrowhead)"></line>
+            </svg>
+            </rect>
         </g>
         <g id="shapes">
             <rect id="palette" rx="10" ry="10"></rect>
             <svg id="rect_shp" class="shape selected" x="51%" y="90%" height="4vh" width="2.5vw"
             onmousedown="rectShpOnClick(evt)" onmousemove="rectShpOnMove(evt)" onmouseup="rectShpOnUp(evt)">
                 <rect width="100%" height="100%"></rect>
+            </svg>
+            <svg id="marker" class="marker">
+                <circle class="lc" r="4"> </circle>
+                <circle class="bc" r="4"> </circle>
+                <circle class="tc" r="4"> </circle>
+                <circle class="rc" r="4"> </circle>
+                <circle class="start" r="4"> </circle>
             </svg>
             <svg id="text_shp" class="shape" x="54%" y="90%" height="4vh" width="2.5vw"
             onmousedown="textShpOnClick(evt)" onmousemove="textShpOnMove(evt)" onmouseup="textShpOnUp(evt)">

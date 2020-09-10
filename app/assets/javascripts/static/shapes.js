@@ -61,7 +61,7 @@ function rectShpOnUp(event) {
         // Also support moving palette
             cloned_shape.remove()
         } else {
-            cloned_shape.setAttribute("class", "selected");
+            cloned_shape.setAttribute("class", "selected object");
             cloned_shape.setAttribute("onmousedown", "rectOnClick(evt)");
             cloned_shape.setAttribute("onmousemove", "rectOnMove(evt)")
             cloned_shape.setAttribute("onmouseup", "rectOnUp(evt)")
@@ -71,6 +71,10 @@ function rectShpOnUp(event) {
                 cloned_shape.setAttribute("id", cloned_shape.id.split("_")[0] + new Date().getTime());
                 cloned_shape.setAttribute("width", "15vw");
                 cloned_shape.setAttribute("height", "20vh");
+                cloned_shape_marker = document.querySelector('#marker').cloneNode(true)
+                cloned_shape_marker.setAttribute("id", cloned_shape.id.split("_")[0] + "_marker" );
+                document.querySelector('#g_board').appendChild(cloned_shape_marker)
+                adjustMarker(cloned_shape, cloned_shape_marker)
             } else {
                 cloned_shape.setAttribute("width", "10vw");
                 cloned_shape.setAttribute("height", "5vh");
@@ -90,4 +94,8 @@ function rectShpOnUp(event) {
             }
         }
     }
+}
+
+function arrowShpOnClick(evt) {
+
 }
